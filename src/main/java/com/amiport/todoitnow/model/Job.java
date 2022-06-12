@@ -10,11 +10,13 @@ public class Job {
 // From 1 to 3, 1 has more priority than 2 and so on.
     private int priority;
     private Date jobDate;
+    private boolean done;
 
     public Job(String name, int priority) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.priority = priority;
+        this.done = false;
     }
 
     public String getId() {
@@ -43,6 +45,10 @@ public class Job {
 
     public Date getJobDate() {
         return this.jobDate;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 
 }
