@@ -51,4 +51,8 @@ public class Job {
         this.done = done;
     }
 
+    public boolean getDone() {
+        return this.done;
+    }
+
 }
