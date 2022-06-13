@@ -8,6 +8,8 @@ public class TodoitnowApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodoitnowApplication.class, args);
+
+		
 	}
 
 }

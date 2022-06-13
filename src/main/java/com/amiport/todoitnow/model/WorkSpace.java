@@ -1,5 +1,6 @@
 package com.amiport.todoitnow.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ public class WorkSpace {
     public WorkSpace(String name) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
+        this.group = new ArrayList<Person>();
     }
 
     public String getId() {

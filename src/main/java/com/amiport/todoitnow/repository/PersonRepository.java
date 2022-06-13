@@ -1,5 +1,6 @@
 package com.amiport.todoitnow.repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,5 +20,9 @@ public class PersonRepository {
 
     public boolean getDelAfterDone(String id) {
         return this.personCollection.get(id).getDelAfterDone();
+    }
+
+    public Collection<Person> listPeople() {
+        return this.personCollection.values();
     }
 }

@@ -7,10 +7,12 @@ public class Job {
     
     private String id;
     private String name;
-// From 1 to 3, 1 has more priority than 2 and so on.
-    private int priority;
     private Date jobDate;
     private boolean done;
+    
+    // From 1 to 3, 1 has more priority than 2 and so on.
+    private int priority;
+    
 
     public Job(String name, int priority) {
         this.id = UUID.randomUUID().toString();

@@ -1,34 +1,31 @@
 package com.amiport.todoitnow.model;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ToDo {
     private String personId;
-    private List<Job> toDoList;
-    private boolean done;
+    private Map<String, Job> toDoList = new HashMap<String, Job>();
 
     public ToDo(String personId) {
         this.personId = personId;
-        this.done = false;
     }
 
     public String getPersonId() {
         return this.personId;
     }
 
+    /*
     public List<Job> getToDoList() {
         return this.toDoList;
     }
+    */
+
+    public Job getJob(String id) {
+        return this.toDoList.get(id);
+    }
 
     public void addJob(Job job) {
-        this.toDoList.add(job);
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-
-    public boolean getDone() {
-        return done;
+        this.toDoList.put(job.getId(), job);
     }
 }

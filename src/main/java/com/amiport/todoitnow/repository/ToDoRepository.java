@@ -1,5 +1,6 @@
 package com.amiport.todoitnow.repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +22,11 @@ public class ToDoRepository {
         return toDo.getPersonId();
     }
 
-    public void addJob(String id, Job job) {
-        this.toDoCollection.get(id).addJob(job);
+    public void addJob(String toDoID, Job job) {
+        //this.toDoCollection.get(toDoID).addJob(job);
+        ToDo toDo = this.toDoCollection.get(toDoID);
+        toDo.addJob(job);
+        this.toDoCollection.replace(toDoID, toDo);
     }
 
     public void delJob(String id) {
@@ -30,6 +34,11 @@ public class ToDoRepository {
     }
 
     public void setJobDone(String id, boolean done) {
-        this.toDoCollection.get(id).setDone(done);
+//        this.toDoCollection.get(id).setDone(done);
+        this.toDoCollection.get(id).getJob(id).setDone(done);
+    }
+
+    public Collection<ToDo> listToDo() {
+        return this.toDoCollection.values();
     }
 }
