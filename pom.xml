@@ -14,7 +14,7 @@
 	<name>todoitnow</name>
 	<description>To do list to personal portfolio</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

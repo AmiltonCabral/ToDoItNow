@@ -1,25 +1,15 @@
 package com.amiport.todoitnow.model;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ToDo {
-    private String personId;
-    private Map<String, Job> toDoList = new HashMap<String, Job>();
+    private Map<String, Job> toDoList;
 
-    public ToDo(String personId) {
-        this.personId = personId;
+    public ToDo() {
+        this.toDoList = new HashMap<String, Job>();
     }
-
-    public String getPersonId() {
-        return this.personId;
-    }
-
-    /*
-    public List<Job> getToDoList() {
-        return this.toDoList;
-    }
-    */
 
     public Job getJob(String id) {
         return this.toDoList.get(id);
@@ -28,4 +18,18 @@ public class ToDo {
     public void addJob(Job job) {
         this.toDoList.put(job.getId(), job);
     }
+
+    public void delJob(String id) {
+        this.toDoList.remove(id);
+    }
+
+    public Collection<Job> listToDo() {
+        return this.toDoList.values();
+    }
+
+    @Override
+    public String toString() {
+        return "To Do List=" + toDoList.values();
+    }
+
 }

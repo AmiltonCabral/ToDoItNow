@@ -1,6 +1,5 @@
 package com.amiport.todoitnow.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,36 +7,32 @@ import org.springframework.stereotype.Service;
 
 import com.amiport.todoitnow.dto.JobDTO;
 import com.amiport.todoitnow.model.Job;
-import com.amiport.todoitnow.model.ToDo;
 import com.amiport.todoitnow.repository.PersonRepository;
-import com.amiport.todoitnow.repository.ToDoRepository;
 
 @Service
 public class ToDoService {
-    
-    @Autowired
-    private ToDoRepository toDoRep;
 
     @Autowired
     private PersonRepository personRep;
 
     
-    public void addJob(String toDoID, JobDTO jobDTO) {
+    public String addJob(String personId, JobDTO jobDTO) {
         Job job = new Job(jobDTO.getName(), jobDTO.getPriority());
-        this.toDoRep.addJob(toDoID, job);
+        this.personRep.addJob(personId, job);
+        return job.getId();
     }
 
     
-    public void setJobDone(String id, boolean done) {
-        if (this.personRep.getDelAfterDone(id)) {
-            this.toDoRep.delJob(id);
+    public void setJobDone(String personId, String jobId, boolean done) {
+        if (this.personRep.getDelAfterDone(personId)) {
+            this.personRep.getPerson(personId).delJob(jobId);
         } else {
-            this.toDoRep.setJobDone(id, done);
+            this.personRep.getPerson(personId).setJobDone(jobId, true);
         }
     }
 
 
-    public List<ToDo> listToDo() {
-        return new ArrayList<ToDo>(this.toDoRep.listToDo());
+    public List<Job> listJobs(String personId) {
+        return this.personRep.getPerson(personId).listJobs();
     }
 }

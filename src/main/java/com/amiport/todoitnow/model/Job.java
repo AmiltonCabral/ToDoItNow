@@ -57,4 +57,10 @@ public class Job {
         return this.done;
     }
 
+    @Override
+    public String toString() {
+        return "Job [done=" + done + ", id=" + id + ", Job Date=" + jobDate + ", Name=" + name + ", Priority=" + priority
+                + "]";
+    }
+
 }
